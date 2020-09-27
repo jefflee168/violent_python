@@ -1,0 +1,17 @@
+#!/usr/bin/python
+
+import sys
+import socket
+
+if len(sys.argv) != 3:
+    print("Usage: ServiceScan <IP PORT>\n eg: ServiceScan 192.168.1.1 80")
+    sys.exit(1)
+
+target = sys.argv[1]
+port = int(sys.argv[2])
+s = socket.socket()
+res = s.connect((target, port))
+s.send('111111')
+service = s.recv(1024)
+s.close()
+print('Port in {} '.format(port) + 'Service: {}'.format(service))
