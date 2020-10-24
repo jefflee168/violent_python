@@ -6,7 +6,8 @@ from pexpect import expect, pxssh, spawn
 
 PROMPT = ['# ', '>>> ', '> ', '\$ ']
 def send_command(child, cmd):
-    child.sendline(cmd)
+    child = pexpect.spawn.sendline(cmd)
+    #child.sendline(cmd)
     child.expect(PROMPT)
     print(child.before)
 
